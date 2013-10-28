@@ -1,7 +1,11 @@
-task :default => :tu
+$:.unshift File.dirname(__FILE__) + 'lib'
 
-desc "Pruebas unitarias de la clase Fraccion"
-task :tu do
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+task :default => :spec
+
+desc "Expectativas de la clase Fraccion"
+task :spec do
 	sh "rspec -I. spec/frac_spec.rb"
 end
 
